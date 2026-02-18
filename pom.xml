@@ -241,6 +241,34 @@
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <groupId>com.diffplug.spotless</groupId>
+                    <artifactId>spotless-maven-plugin</artifactId>
+                    <version>3.0.0</version>
+                    <configuration>
+                        <java>
+                            <googleJavaFormat>
+                                <style>AOSP</style>
+                                <formatJavadoc>false</formatJavadoc>
+                                <reflowLongStrings>true</reflowLongStrings>
+                            </googleJavaFormat>
+                            <importOrder>
+                                <semanticSort>true</semanticSort>
+                            </importOrder>
+                            <removeUnusedImports />
+                            <formatAnnotations />
+                        </java>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>spotless-check</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-antrun-plugin</artifactId>
                     <version>3.2.0</version>
