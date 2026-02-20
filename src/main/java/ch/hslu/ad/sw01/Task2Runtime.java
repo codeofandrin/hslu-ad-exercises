@@ -1,6 +1,6 @@
 package ch.hslu.ad.sw01;
 
-public class Runtime {
+public class Task2Runtime {
     private static long task1Count = 0;
     private static long task2Count = 0;
     private static long task3Count = 0;
