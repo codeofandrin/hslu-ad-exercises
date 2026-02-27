@@ -1,5 +1,6 @@
-package ch.hslu.ad.sw02;
+package ch.hslu.ad.sw02.chain_list;
 
+import ch.hslu.ad.sw02.Node;
 import java.util.Iterator;
 import java.util.Objects;
 
@@ -8,26 +9,26 @@ public class List<T> implements Iterable<T> {
     private long size = 0;
 
     public long size() {
-        return size;
+        return this.size;
     }
 
-    public Node<T> head() {
-        return head;
+    public T peek() {
+        return this.head == null ? null : head.getItem();
     }
 
     public boolean add(T item) {
         this.head = new Node<>(item, this.head);
-        size++;
+        this.size++;
 
         return true;
     }
 
     public T pop() {
         T temp = null;
-        if (size > 0) {
+        if (this.size > 0) {
             temp = this.head.getItem();
             this.head = this.head.getNext();
-            size--;
+            this.size--;
         }
 
         return temp;
@@ -62,7 +63,7 @@ public class List<T> implements Iterable<T> {
                 } else {
                     before.setNext(current.getNext());
                 }
-                size--;
+                this.size--;
                 ret = true;
                 break;
             }

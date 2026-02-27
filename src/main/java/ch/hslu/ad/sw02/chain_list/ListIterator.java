@@ -1,5 +1,6 @@
-package ch.hslu.ad.sw02;
+package ch.hslu.ad.sw02.chain_list;
 
+import ch.hslu.ad.sw02.Node;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
