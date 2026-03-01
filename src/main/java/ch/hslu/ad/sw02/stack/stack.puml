@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam classAttributeIconSize 0
+
+interface Stack<T> {
+    + int size()
+    + int count()
+    + boolean push(T)
+    + T pop()
+    + T peek()
+    + void clear()
+    + boolean isFull()
+    + boolean isEmpty()
+}
+
+@enduml
