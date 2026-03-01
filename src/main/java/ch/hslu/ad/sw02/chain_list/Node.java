@@ -1,4 +1,4 @@
-package ch.hslu.ad.sw02;
+package ch.hslu.ad.sw02.chain_list;
 
 public class Node<T> {
 
