@@ -81,9 +81,9 @@ class ListTest {
 
     @Test
     void testPopEmpty() {
-        List<Integer> list = new List<>();
-
-        assertThat(list.pop()).isNull();
+        assertThatThrownBy(() -> new List<>().pop())
+                .isInstanceOf(IllegalStateException.class)
+                .hasMessage("list is empty");
     }
 
     @Test

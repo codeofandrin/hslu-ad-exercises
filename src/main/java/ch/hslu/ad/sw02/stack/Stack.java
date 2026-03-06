@@ -10,8 +10,8 @@ public class Stack<T> implements IStack<T> {
         this.items = new Object[this.maxSize];
     }
 
-    public Stack(final int size) {
-        this.maxSize = size;
+    public Stack(final int capacity) {
+        this.maxSize = capacity;
         this.items = new Object[this.maxSize];
     }
 

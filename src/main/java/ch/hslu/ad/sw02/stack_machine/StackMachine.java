@@ -7,7 +7,7 @@ public final class StackMachine {
 
     private int[] getNextTwo() {
         if (this.stack.size() < 2) {
-            throw new IllegalStateException("this.stack must contain at least two elements");
+            throw new IllegalStateException("stack must contain at least two elements");
         }
 
         int a = this.stack.pop();
