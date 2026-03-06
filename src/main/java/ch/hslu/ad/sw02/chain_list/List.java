@@ -23,13 +23,15 @@ public class List<T> implements Iterable<T> {
     }
 
     public T pop() {
-        T temp = null;
-        if (this.size > 0) {
-            temp = this.head.getItem();
-            this.head = this.head.getNext();
-            this.size--;
+        if (this.size == 0) {
+            // let's throw an exception instead of return null to distinguish between "null element"
+            // and "no element".
+            throw new IllegalStateException("list is empty");
         }
 
+        T temp = this.head.getItem();
+        this.head = this.head.getNext();
+        this.size--;
         return temp;
     }
 
