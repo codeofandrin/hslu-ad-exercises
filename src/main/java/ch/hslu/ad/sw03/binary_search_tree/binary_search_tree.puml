@@ -1,0 +1,78 @@
+@startuml
+'https://plantuml.com/class-diagram
+skinparam classAttributeIconSize 0
+
+ITree <|.. BinarySearchTree
+BinarySearchTree *-- Node
+Node ..|> Comparable
+Node ..> NodeDirection
+
+interface ITree<T> {
+    + add(item: T): boolean
+    + remove(item: T): boolean
+    + contains(item: T): boolean
+}
+
+class BinarySearchTree<T extends Comparable<T>> {
+    - root: Node<T>
+    - size: int
+
+    + BinarySearchTree()
+    + BinarySearchTree(items: Collection<T>)
+    + BinarySearchTree(items: T...)
+
+    + add(item: T): boolean
+    + remove(item: T): boolean
+    + contains(item: T): boolean
+    + balance(): void
+    + size(): int
+    + root(): T
+
+    + inOrder(): List<T>
+    + preOrder(): List<T>
+    + postOrder(): List<T>
+
+    + forEachInOrder(action: Consumer<T>): void
+    + forEachPreOrder(action: Consumer<T>): void
+    + forEachPostOrder(action: Consumer<T>): void
+
+    - recAdd(current: Node<T>, target: Node<T>): boolean
+    - recRemove(current: Node<T>, target: Node<T>): boolean
+    - recRetrieveNode(current: Node<T>, target: Node<T>): Node<T>
+    - recSearchMostLeftOnRight(current: Node<T>): Node<T>
+
+    - recInOrder(action: Consumer<T>, node: Node<T>): void
+    - recPreOrder(action: Consumer<T>, node: Node<T>): void
+    - recPostOrder(action: Consumer<T>, node: Node<T>): void
+}
+
+class Node<T extends Comparable<T>> {
+    - item: T
+    - left: Node<T>
+    - right: Node<T>
+    - parent: Node<T>
+    - nodeDirection: NodeDirection
+
+    + getItem(): T
+    + getLeft(): Node<T>
+    + getRight(): Node<T>
+    + getParent(): Node<T>
+
+    + setLeft(node: Node<T>): void
+    + setRight(node: Node<T>): void
+    + setItem(item: T): void
+
+    + isLeft(): boolean
+    + isRight(): boolean
+
+    + hashCode(): int
+    + equals(obj: Object): boolean
+    + compareTo(o: Node<T>): int
+}
+
+enum NodeDirection {
+    LEFT
+    RIGHT
+}
+
+@enduml
