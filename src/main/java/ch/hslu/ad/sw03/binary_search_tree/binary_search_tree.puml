@@ -3,9 +3,11 @@
 skinparam classAttributeIconSize 0
 
 ITree <|.. BinarySearchTree
-BinarySearchTree *-- Node
+BinarySearchTree "0..1  " *-- Node
 Node ..|> Comparable
 Node ..> NodeDirection
+Node "0..1  " *-- Node
+
 
 interface ITree<T> {
     + add(item: T): boolean
