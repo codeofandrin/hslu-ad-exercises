@@ -83,6 +83,10 @@ public final class HashSetArray<T> {
     }
 
     public boolean contains(final T item) {
+        if (this.size == 0) {
+            return false;
+        }
+
         final int index = this.getIndex(item);
 
         if (this.items[index] == null) {

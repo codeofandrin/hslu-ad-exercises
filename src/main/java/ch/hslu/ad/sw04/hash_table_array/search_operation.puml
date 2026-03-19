@@ -1,0 +1,23 @@
+@startuml
+title Search Operation
+
+start
+
+:Hash(key);
+:Index berechnen;
+:Liste bei Index holen;
+
+if (Liste leer?) then (ja)
+  :return null;
+else (nein)
+  :Liste durchlaufen;
+  if (Key gefunden?) then (ja)
+    :return Wert;
+  else (nein)
+    :return null;
+  endif
+endif
+
+stop
+
+@enduml

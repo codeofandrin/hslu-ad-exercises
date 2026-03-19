@@ -1,17 +1,17 @@
-package ch.hslu.ad.sw04.hash_table_array;
+package ch.hslu.ad.sw04.hash_set_list;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class HashSetArrayTest {
+class HashSetListTest {
 
-    private HashSetArray<Integer> hashSet;
+    private HashSetList<Integer> hashSet;
 
     @BeforeEach
     void setUp() {
-        hashSet = new HashSetArray<>(10);
+        hashSet = new HashSetList<>(10);
     }
 
     @Test
@@ -34,7 +34,7 @@ class HashSetArrayTest {
     }
 
     @Test
-    void testAddDuplicateElement() {
+    void testAddDuplicateElementImmediately() {
         hashSet.add(5);
         boolean result = hashSet.add(5);
 
@@ -43,8 +43,21 @@ class HashSetArrayTest {
     }
 
     @Test
+    void testAddDuplicateElementLater() {
+        hashSet.add(5);
+        hashSet.add(15);
+        System.out.println(hashSet);
+
+        boolean result = hashSet.add(5);
+        System.out.println(hashSet);
+
+        assertThat(result).isFalse();
+        assertThat(hashSet.size()).isEqualTo(2);
+    }
+
+    @Test
     void testAddWhenFull() {
-        HashSetArray<Integer> smallSet = new HashSetArray<>(2);
+        HashSetList<Integer> smallSet = new HashSetList<>(2);
         smallSet.add(1);
         smallSet.add(2);
         boolean result = smallSet.add(3);
@@ -78,7 +91,7 @@ class HashSetArrayTest {
 
     @Test
     void testContainsInZeroSet() {
-        hashSet = new HashSetArray<>(0);
+        hashSet = new HashSetList<>(0);
         boolean result = hashSet.contains(5);
 
         assertThat(result).isFalse();

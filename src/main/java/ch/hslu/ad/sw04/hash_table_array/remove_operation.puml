@@ -1,0 +1,24 @@
+@startuml
+title Remove Operation
+
+start
+
+:Hash(key);
+:Index berechnen;
+:Liste bei Index holen;
+
+if (Liste leer?) then (ja)
+  :return false;
+else (nein)
+  :Liste durchlaufen;
+  if (Key gefunden?) then (ja)
+    :Element aus Liste entfernen;
+    :return true;
+  else (nein)
+    :return false;
+  endif
+endif
+
+stop
+
+@enduml

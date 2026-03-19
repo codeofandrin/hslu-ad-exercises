@@ -1,0 +1,24 @@
+@startuml
+title Add Operation
+
+start
+
+:Hash(key);
+:Index berechnen;
+
+if (Element leer?) then (ja)
+  :Neue Liste erstellen;
+  :Element einfügen;
+else (nein)
+  :Liste durchlaufen;
+  if (Key existiert?) then (ja)
+    :Wert aktualisieren;
+  else (nein)
+    :Element am Listenanfang einfügen;
+  endif
+endif
+
+stop
+
+@enduml
+
