@@ -1,16 +1,15 @@
 package ch.hslu.ad.sw04.hash_set_list;
 
 import ch.hslu.ad.sw02.chain_list.Node;
-import ch.hslu.ad.sw04.hash_table_array.HashSetArray;
 import java.util.Arrays;
 import java.util.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-// only disadvantage is the use of a node, but still O(1)!
+// only disadvantage is the use of a node, but still O(1) for add!
 // search is O(n) in worst case
 public class HashSetList<T> {
-    private static final Logger LOG = LoggerFactory.getLogger(HashSetArray.class);
+    private static final Logger LOG = LoggerFactory.getLogger(HashSetList.class);
 
     private Node<T>[] items;
     private final int capacity;
@@ -27,6 +26,7 @@ public class HashSetList<T> {
     }
 
     public boolean add(final T item) {
+        // optional
         if (this.size >= this.capacity) {
             return false;
         }
@@ -59,10 +59,6 @@ public class HashSetList<T> {
 
         if (this.items[index] == null) {
             return false;
-        }
-
-        if (Objects.equals(new Node<>(item), this.items[index])) {
-            return true;
         }
 
         Node<T> current = this.items[index];
