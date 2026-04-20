@@ -35,10 +35,6 @@ public final class Sorts {
             array[j] = element;
         }
 
-        // System.out.println("Insertion Sort\n---------------------------");
-        // System.out.println("\tArray Size: " + array.length);
-        // System.out.println("\tCompares: " + cmpCount);
-
         return cmpCount;
     }
 }
