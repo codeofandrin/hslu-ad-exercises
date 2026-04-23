@@ -108,6 +108,11 @@ public class SortingExamples {
     }
 
     public static void main(String[] args) {
-        benchmarkSort("Insertion Sort", (int[] array) -> Sorts.insertionSort(array, false));
+        // Sorts.bubbleSort2(getShuffledNumbers(50), true);
+
+        // benchmarkSort("Insertion Sort", (int[] array) -> Sorts.insertionSort(array, false));
+        // benchmarkSort("Selection Sort", (int[] array) -> Sorts.selectionSort(array, false));
+        // benchmarkSort("Bubble Sort 1", (int[] array) -> Sorts.bubbleSort(array, false));
+        benchmarkSort("Bubble Sort 2", (int[] array) -> Sorts.bubbleSort2(array, false));
     }
 }
