@@ -21,6 +21,7 @@ public final class Sorts {
             int element = array[i];
             int j = i;
 
+            cmpCount++;
             while (j > 0 && array[j - 1] > element) {
                 array[j] = array[j - 1];
                 j--;
