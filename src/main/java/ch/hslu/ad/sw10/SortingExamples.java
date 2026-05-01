@@ -166,30 +166,45 @@ public class SortingExamples {
     }
 
     public static void main(String[] args) {
-        // ---- e) ----
+        // ===== Task 2 =====
+
+        // --- e) ---
         // int[] sizes         = { 1_000_000, 2_000_000, 4_000_000 };
         // ArrayType[] types   = new ArrayType[10]; Arrays.fill(types, ArrayType.SHUFFLED);
         //
         // benchmarkSort("Quick Sort", (int[] array) -> Sorts.quickSort(array, false, false), sizes,
         // types, true);
 
-        // ---- f) ----
-        int[] sizes = {10_000, 20_000, 40_000};
-        ArrayType[] types = {ArrayType.ASC, ArrayType.DESC, ArrayType.SHUFFLED};
+        // --- f) ---
+        // low n, without random pivot
+        // ---
+        // int[] sizes = {10_000, 20_000, 40_000};
+        // ArrayType[] types = {ArrayType.ASC, ArrayType.DESC, ArrayType.SHUFFLED};
+        // benchmarkSort(
+        //        "Quick Sort without random pivot",
+        //        (int[] array) -> Sorts.quickSort(array, false, false),
+        //        sizes,
+        //        types,
+        //        false);
 
-        benchmarkSort(
-                "Quick Sort without random pivot",
-                (int[] array) -> Sorts.quickSort(array, false, false),
-                sizes,
-                types,
-                false);
+        // ---
+        // low n, with random pivot
+        // ---
         // benchmarkSort("Quick Sort with random pivot", (int[] array) -> Sorts.quickSort(array,
         // true, false), sizes, types, false);
 
+        // ---
+        // high n, with random pivot
+        // ---
         // int[] sizes         = { 1_000_000, 2_000_000, 4_000_000 };
         // ArrayType[] types   = { ArrayType.ASC, ArrayType.DESC, ArrayType.SHUFFLED};
-        //
         // benchmarkSort("Quick Sort with random pivot", (int[] array) -> Sorts.quickSort(array,
         // true, false), sizes, types, false);
+
+        // ===== Task 4 =====
+        int[] sizes = {1_000_000, 2_000_000, 4_000_000};
+        ArrayType[] types = {ArrayType.ASC, ArrayType.DESC, ArrayType.SHUFFLED};
+        benchmarkSort(
+                "Heapsort", (int[] array) -> Sorts.heapSort(array, false), sizes, types, false);
     }
 }

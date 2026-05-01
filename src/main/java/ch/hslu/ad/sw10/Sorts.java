@@ -3,6 +3,7 @@ package ch.hslu.ad.sw10;
 public final class Sorts {
 
     static long qsCmpCount = 0;
+    static long hsCmpCount = 0;
 
     private static void swap(final int[] a, final int i, final int j) {
         int temp = a[i];
@@ -233,5 +234,74 @@ public final class Sorts {
         }
 
         return qsCmpCount;
+    }
+
+    private static void heapify(
+            final int[] a, final int left, final int right, final boolean showAnimation) {
+        // idx of first child
+        int k = 2 * left + 1;
+
+        // abort if out of sub array
+        if (k > right) {
+            if (showAnimation) {
+                SortingAnimation.instance().showArray(a, 20, k);
+            }
+            return;
+        }
+
+        // exactly one child
+        if (k + 1 > right) {
+            if (a[left] < a[k]) {
+                swap(a, left, k);
+            }
+
+            hsCmpCount++;
+            if (showAnimation) {
+                SortingAnimation.instance().showArray(a, 20, k);
+            }
+            return;
+        }
+
+        // two children
+        if (a[k] < a[k + 1]) {
+            k++;
+        }
+        hsCmpCount++;
+        if (showAnimation) {
+            SortingAnimation.instance().showArray(a, 20, k);
+        }
+
+        if (a[left] < a[k]) {
+            swap(a, left, k);
+            heapify(a, k, right, showAnimation);
+        }
+
+        hsCmpCount++;
+        if (showAnimation) {
+            SortingAnimation.instance().showArray(a, 20, k);
+        }
+    }
+
+    public static long heapSort(final int[] a, final boolean showAnimation) {
+        hsCmpCount = 0;
+
+        final int n = a.length;
+        int left = n / 2;
+        int right = n - 1;
+
+        // build heap
+        while (left > 0) {
+            left = left - 1;
+            heapify(a, left, right, showAnimation);
+        }
+
+        // use heap to get max and put it to end
+        while (right > 0) {
+            swap(a, right, left);
+            right--;
+            heapify(a, left, right, showAnimation);
+        }
+
+        return hsCmpCount;
     }
 }
