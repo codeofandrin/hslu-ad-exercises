@@ -4,8 +4,8 @@ import java.util.NoSuchElementException;
 
 public final class FixedSizeHeap implements IntegerHeap {
 
-    final int[] data;
-    int size = 0;
+    private final int[] data;
+    private int size = 0;
 
     FixedSizeHeap(final int capacity) {
         this.data = new int[capacity];
@@ -45,6 +45,9 @@ public final class FixedSizeHeap implements IntegerHeap {
 
     @Override
     public void insert(final int element) {
+        if (this.size == this.data.length) {
+            throw new IllegalStateException("Heap is full");
+        }
 
         if (this.isEmpty()) {
             this.data[0] = element;

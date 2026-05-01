@@ -113,7 +113,7 @@ class FixedSizeHeapTest {
         heap.insert(1);
         heap.insert(2);
 
-        assertThatThrownBy(() -> heap.insert(3)).isInstanceOf(IndexOutOfBoundsException.class);
+        assertThatThrownBy(() -> heap.insert(3)).isInstanceOf(IllegalStateException.class);
     }
 
     @Test
@@ -274,6 +274,23 @@ class FixedSizeHeapTest {
         FixedSizeHeap heap = new FixedSizeHeap(5);
 
         assertThatThrownBy(heap::pop).isInstanceOf(java.util.NoSuchElementException.class);
+    }
+
+    @Test
+    void testPop_withZeroValues() {
+        FixedSizeHeap heap = new FixedSizeHeap(10);
+
+        heap.insert(5);
+        heap.insert(0);
+        heap.insert(0);
+        heap.insert(3);
+        heap.insert(10);
+
+        assertThat(heap.pop()).isEqualTo(10);
+        assertThat(heap.pop()).isEqualTo(5);
+        assertThat(heap.pop()).isEqualTo(3);
+        assertThat(heap.pop()).isEqualTo(0);
+        assertThat(heap.pop()).isEqualTo(0);
     }
 
     @Test

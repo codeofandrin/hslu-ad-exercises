@@ -2,8 +2,8 @@ package ch.hslu.ad.sw10;
 
 public final class Sorts {
 
-    static long qsCmpCount = 0;
-    static long hsCmpCount = 0;
+    private static long qsCmpCount = 0;
+    private static long hsCmpCount = 0;
 
     private static void swap(final int[] a, final int i, final int j) {
         int temp = a[i];
@@ -289,13 +289,13 @@ public final class Sorts {
         int left = n / 2;
         int right = n - 1;
 
-        // build heap
+        // phase 1: build heap
         while (left > 0) {
             left = left - 1;
             heapify(a, left, right, showAnimation);
         }
 
-        // use heap to get max and put it to end
+        // phase 2: use heap to get max and put it to end
         while (right > 0) {
             swap(a, right, left);
             right--;
